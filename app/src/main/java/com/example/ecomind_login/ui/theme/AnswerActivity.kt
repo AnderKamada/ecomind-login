@@ -1,5 +1,6 @@
 package com.example.ecomind_login.ui.theme
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -13,7 +14,7 @@ private fun Any.onCreate(savedInstanceState: Bundle?) {
 
 class AnswerActivity {
     fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+        onCreate(savedInstanceState)
         setContentView(R.layout.telaanswer)
 
         setupButtonWithFinish(R.id.button2)
@@ -37,6 +38,9 @@ class AnswerActivity {
 
         respostasRef.child("resposta1").setValue(resposta)
 
+    val intent = Intent(this, ListaActivity::class.java)
+    intent.putStringArrayListExtra("respostas", ArrayList(respostas))
+    startActivity(intent)
 
     private fun setupButtonWithFinish(buttonId: Int) {
         val button = findViewById<Button>(buttonId)
